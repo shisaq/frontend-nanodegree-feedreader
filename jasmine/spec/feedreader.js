@@ -31,21 +31,21 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-         it('every feed\'s URL is not empty', function () {
+        it('every feed\'s URL is not empty', function () {
             for (var i = 0; i < allFeeds.length; i++) {
-                expect(allFeeds[i].url).not.toBe('');
+                expect(allFeeds[i].url.length).toBeGreaterThan(0);
             }
-         });
+        });
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-        it('every feed\'s URL is not empty', function () {
+        it('every feed\'s name is not empty', function () {
             for (var i = 0; i < allFeeds.length; i++) {
-                expect(allFeeds[i].name).not.toBe('');
+                expect(allFeeds[i].name.length).toBeGreaterThan(0);
             }
-         });
+        });
     });
 
 
@@ -86,15 +86,35 @@ $(function() {
             loadFeed(0, done);
         });
         it('async is done', function (done) {
+            // if the length of `.entry` is greater than 0, that means
+            //  it has some content
             expect($('.feed').find('.entry').length).toBeGreaterThan(0);
             done();
         });
     });
 
-    /* TODO: Write a new test suite named "New Feed Selection"
+    /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', function () {
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        var oldFeed, newFeed;
+        // oldFeed is from allFeeds[0], newFeed is from allFeeds[1].
+        // if they're not the same, that means the content changed
+        beforeEach(function(done) {
+            loadFeed(0, function () {
+                oldFeed = $('.feed').find('.entry-link').attr('href');
+                done();
+            });
+        });
+        it('content changes when a new feed is loaded', function (done) {
+            loadFeed(1, function () {
+                newFeed = $('.feed').find('.entry-link').attr('href');
+            });
+            expect(newFeed==oldFeed).toBe(false);
+            done();
+        });
+    });
 }());
