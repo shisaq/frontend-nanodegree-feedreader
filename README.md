@@ -6,6 +6,7 @@
 4. In `js/app.js` we can find array `allFeeds`. We must make sure every item contains valid title and url
 5. The feed list should be hide by default, and be toggled successfully by clicking the hamburger button
 6. Run inner functions after the async sources been loaded
+7. Open `index.html` to load the app
 
 # Interface
 
