@@ -17,6 +17,16 @@ There are 4 parts on the app:
 * **Main articles area**: Shows the articles of picked feed
 * **Test**: On the bottom of the page, which shows if there is anything wrong on the app. No related with the reading contents
 
+## Handy Reference
+
+I used regex to define a url, see reference:
+
+* [Gist code](https://gist.github.com/dperini/729294)
+* [Perfect URL Validation Regex](https://mathiasbynens.be/demo/url-regex) 
+
+This advice was from a great Udacity Reviewer
+
+
 # Project Overview
 
 In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.
